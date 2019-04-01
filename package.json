@@ -47,6 +47,7 @@
     "commander": "^2.9.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-css-wrap": "https://github.com/roojay520/gulp-css-wrap",
     "gulp-cssmin": "^0.1.7",
     "gulp-nop": "0.0.3",
     "gulp-sass": "^3.1.0",
