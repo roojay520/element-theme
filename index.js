@@ -6,13 +6,13 @@ var config = require('./lib/config')
 
 var build = function (opts) {
   return function () {
-    return task.build(Object.assign(opts, {message: 'build element theme'}))
+    return task.build(Object.assign(opts, {message: 'build element theme\n'}))
   }
 }
 
 var fonts = function (opts) {
   return function () {
-    return task.fonts(Object.assign(opts, {message: 'build theme font'}))
+    return task.fonts(Object.assign(opts, {message: 'build theme font\n'}))
   }
 }
 
