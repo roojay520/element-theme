@@ -6,6 +6,9 @@
     "element-theme-generator": "./bin/element-theme",
     "etg": "./bin/element-theme"
   },
+  "scripts": {
+    "postversion": "git push --follow-tags"
+  },
   "main": "index.js",
   "repository": "https://github.com/roojay520/element-theme-generator.git",
   "author": "roojay <roojay520@gmail.com>",
