@@ -16,10 +16,6 @@
     "theme",
     "cli"
   ],
-  "files": [
-    "bin",
-    "lib"
-  ],
   "bugs": {
     "url": "https://github.com/roojay520/element-theme-generator/issues"
   },
