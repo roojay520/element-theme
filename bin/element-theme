@@ -1,30 +1,30 @@
 #!/usr/bin/env node
 
-var program = require('commander')
-var main = require('../index.js')
-var check = require('../lib/gen-vars').check
-var config = {}
+const path = require('path');
+const program = require('commander');
+const main = require('../index.js');
+const { check } = require('../lib/gen-vars');
 
-console.log()
-process.on('exit', function () {
-  console.log()
-})
+const options = {};
+
+process.on('exit', () => {});
 
 program
   .version(require('../package.json').version)
-  .option('-i --init [filePath]', 'init variables file')
+  .option('--init [filePath]', 'init variables file')
   .option('-w --watch', 'watch variable changes then build')
-  .option('-o --out [outPath]', 'output path', function (out) {config.out = out})
-  .option('-n --name [themeName]', 'theme name', function (name) {config.themeName = name})
-  .option('-s --scope [nameSpace]', 'name Space', function (scope) {config.scope = scope !== false})
-  .option('-m --minimize', 'compressed file', function (minimize) {config.minimize = minimize !== false})
-  .option('-c --config [filePath]', 'variables file', function (c) {config.config = c})
-  .option('-b --browsers <items>', 'set browsers', function (browsers) {config.browsers = browsers.split(',')})
-  .parse(process.argv)
+  .option('-o --out <outPath>', 'output path', (out) => { options.out = out; })
+  .option('-s --scope <scopeName>', 'name space', (scope) => { options.scope = scope; })
+  .option('-m --minimize', 'compressed file', (minimize) => { options.minimize = minimize !== false; })
+  .option('-i --input <varsFilePath>', 'variables file path', (vars) => { options.vars = vars; })
+  .option('-b --browsers <items>', 'set browsers', (browsers) => { options.browsers = browsers.split(','); })
+  .parse(process.argv);
 
-check()
+check();
 
 if (program.init) {
   return main.init(program.init)
 }
-program.watch ? main.watch(config) : main.run(config)
+
+program.watch ? main.watch(options) : main.run(options);
+
