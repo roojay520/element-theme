@@ -1,6 +1,6 @@
 {
   "name": "@feq/element-theme-generator",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Theme generator cli tool for Element",
   "bin": {
     "element-theme-generator": "./bin/element-theme",
