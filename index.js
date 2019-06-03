@@ -1,37 +1,30 @@
-var gulp = require('gulp')
-var series = require('run-sequence').use(gulp)
-var task = require('./lib/task')
-var vars = require('./lib/gen-vars')
-var config = require('./lib/config')
+const gulp = require('gulp');
+const chalk = require('chalk');
+const task = require('./lib/task');
+const vars = require('./lib/gen-vars');
+const config = require('./lib/config')();
 
-var build = function (opts) {
-  return function () {
-    return task.build(Object.assign(opts, {message: 'build element theme\n'}))
-  }
-}
+const build = opts => () => task.compileSass(Object.assign(opts, { message: `${chalk.green('etg: build element theme')}\n` }));
 
-var fonts = function (opts) {
-  return function () {
-    return task.fonts(Object.assign(opts, {message: 'build theme font\n'}))
-  }
-}
+const fonts = opts => () => task.copyFonts(Object.assign(opts, { message: `${chalk.green('etg: build theme fonts')}\n` }));
 
-exports.init = function (filePath) {
-  filePath = {}.toString.call(filePath) === '[object String]' ? filePath : ''
-  vars.init(filePath)
-}
+exports.init = (filePath) => {
+  const _filePath = {}.toString.call(filePath) === '[object String]' ? filePath : '';
+  vars.init(_filePath);
+};
 
-exports.watch = function (opts) {
-  gulp.task('build', build(opts))
-  exports.run(opts)
-  gulp.watch(opts.config || config.config, ['build'])
-}
+exports.watch = (opts) => {
+  gulp.task('build', build(opts));
+  exports.run(opts);
+  const varsPath = opts.vars || config.vars;
+  gulp.watch(varsPath, gulp.series('build'));
+};
 
-exports.run = function (opts, cb) {
-  gulp.task('build', build(opts))
-  gulp.task('fonts', fonts(opts))
+exports.run = (opts, cb) => {
+  gulp.task('build', build(opts));
+  gulp.task('fonts', fonts(opts));
   if (typeof cb === 'function') {
-    return series('build', 'fonts', cb);
+    return gulp.series('build', 'fonts', cb)();
   }
-  return series('build', 'fonts');
-}
+  return gulp.series('build', 'fonts')();
+};
