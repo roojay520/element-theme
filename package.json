@@ -1,61 +1,54 @@
 {
-  "name": "element-theme",
+  "name": "@feq/element-theme-generator",
   "version": "2.0.1",
   "description": "Theme generator cli tool for Element",
   "bin": {
-    "element-theme": "./bin/element-theme",
-    "et": "./bin/element-theme"
+    "element-theme-generator": "./bin/element-theme",
+    "etg": "./bin/element-theme"
   },
-  "files": [
-    "bin",
-    "lib"
-  ],
   "main": "index.js",
-  "scripts": {
-    "test": "xo"
-  },
-  "xo": {
-    "space": true,
-    "rule": {
-      "semi": 0,
-      "unicorn/no-process-exit": 0,
-      "import/no-dynamic-require": 0
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:ElementUI/element-theme.git"
-  },
+  "repository": "https://github.com/roojay520/element-theme-generator.git",
+  "author": "roojay <roojay520@gmail.com>",
+  "license": "MIT",
   "keywords": [
     "element-ui",
     "vue",
     "theme",
     "cli"
   ],
+  "files": [
+    "bin",
+    "lib"
+  ],
   "bugs": {
-    "url": "https://github.com/ElementUI/element-theme/issues"
+    "url": "https://github.com/roojay520/element-theme-generator/issues"
   },
-  "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
-  "engines": {
-    "node": ">=0.12.0"
-  },
-  "license": "MIT",
   "peerDependencies": {
     "element-theme-chalk": "*"
   },
   "dependencies": {
+    "@feq/gulp-css-min": "^1.0.0",
+    "@feq/gulp-css-wrap": "^1.0.3",
+    "chalk": "^2.4.2",
     "commander": "^2.9.0",
-    "gulp": "^3.9.1",
+    "fancy-log": "^1.3.3",
+    "fs-extra": "^8.0.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
-    "gulp-css-wrap": "https://github.com/roojay520/gulp-css-wrap",
-    "gulp-cssmin": "^0.2.0",
     "gulp-nop": "0.0.3",
     "gulp-sass": "^4.0.2",
-    "ora": "^0.3.0",
-    "run-sequence": "^1.2.2"
+    "inquirer": "^6.3.1",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.isempty": "^4.4.0",
+    "lodash.merge": "^4.6.1",
+    "node-sass": "^4.12.0",
+    "ora": "^3.4.0"
   },
   "devDependencies": {
-    "element-theme-chalk": "^2.8.2",
-    "xo": "^0.24.0"
+    "element-theme-chalk": "^2.9.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "gulp-rename": "^1.4.0"
   }
 }
